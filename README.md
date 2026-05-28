@@ -81,3 +81,44 @@ namespace ConsoleApplication1
 }
 
 // 3) "8"
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Double mayores, menores, total, promedio, opcion;
+            mayores = 0; menores = 0; 
+          
+           
+            do
+            {
+                Console.WriteLine("Ingrese la edad de la persona");
+                Console.Write("Respuesta: ");
+                opcion = Convert.ToInt32(Console.ReadLine());
+                if (opcion >= 18)
+                {
+                    mayores += 1;
+                }
+                else if (opcion < 18)
+                {
+                    menores += 1;
+                }
+                if(opcion < 0)
+                {
+                    break;
+                }
+            } while (true);
+            promedio = (menores + mayores) / 100;
+            Console.WriteLine("Mayores: "+mayores+", Menores: "+menores+", Promedio: "+promedio);
+        }
+    }
+}
+completar 3
