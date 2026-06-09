@@ -162,3 +162,66 @@ namespace ConsoleApplication1
 }
 
 // 5) "10"
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Double creditos, menor, apuesta,dadoUno,dadoDos;
+            creditos = 100;
+
+
+            do
+            {
+                Console.WriteLine("LET'S GO GAMBLING!: ");
+                Console.Write("Apuesta: ");
+                apuesta = Convert.ToInt32(Console.ReadLine());
+
+                if (apuesta != 0)
+                {
+                    Console.WriteLine("Los dados tienen 6 puntos:");
+                    Console.Write("Primer dado:");
+                    dadoUno = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Segundo dado:");
+                    dadoDos = Convert.ToInt32(Console.ReadLine());
+
+                    if (apuesta > creditos || apuesta < 0)
+                    {
+                        Console.WriteLine("Invalida");
+                    }
+
+                    if (dadoUno + dadoDos == 11 || dadoUno + dadoDos == 7)
+                    {
+                        creditos *= 2;
+                        Console.WriteLine("En hora buena, has ganado! (apostado se duplica("+creditos+"))");                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Oh dang it! Has perdido todo lo apostado!");
+                        apuesta = 0;
+                    }
+                }
+
+            } while (apuesta != 0 || creditos < 1);
+            if (creditos < 1)
+            {
+                Console.WriteLine("Perdiste todos tus creditos!");
+            }
+            else
+            {
+                Console.WriteLine("Dejaste de apostar, y te fuiste con "+creditos+" creditos en tus bolsillos");
+            }
+
+        }
+    }
+}
