@@ -94,34 +94,38 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
 
-            Double mayores, menores, total, promedio, opcion;
-            mayores = 0; menores = 0; 
-          
-           
+            Double mayores, menores, promedio, opcion, total = 0, contador = 0;
+            mayores = 0; menores = 0;
+
             do
             {
                 Console.WriteLine("Ingrese la edad de la persona");
                 Console.Write("Respuesta: ");
                 opcion = Convert.ToInt32(Console.ReadLine());
+                if (opcion > 0)
+                {
+                    total += opcion;
+                    contador += 1;
+                }               
                 if (opcion >= 18)
                 {
                     mayores += 1;
                 }
-                else if (opcion < 18)
+                else if (opcion < 18 && opcion > 0)
                 {
                     menores += 1;
                 }
-                if(opcion < 0)
+                if (opcion < 1)
                 {
                     break;
                 }
             } while (true);
-            promedio = (menores + mayores) / 100;
-            Console.WriteLine("Mayores: "+mayores+", Menores: "+menores+", Promedio: "+promedio);
+            promedio = total / contador;
+            Console.WriteLine("Mayores: " + mayores + ", Menores: " + menores + ", Promedio: "+promedio);
+
         }
     }
 }
-RESVISAR EL 3
 
 
 // 4) "9"
