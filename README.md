@@ -176,50 +176,57 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
 
-            Double creditos, menor, apuesta,dadoUno,dadoDos;
+            Double creditos, apuesta, dadoUno, dadoDos;
             creditos = 100;
 
+            Console.WriteLine("El programa se detiene al introducir 0, o cuendo te quedes sin creditos, comienzas el juego con 100 creditos");
 
             do
             {
-                Console.WriteLine("LET'S GO GAMBLING!: ");
-                Console.Write("Apuesta: ");
+                Console.Write("Tu Apuesta: ");
                 apuesta = Convert.ToInt32(Console.ReadLine());
 
-                if (apuesta != 0)
+                if (apuesta != 0 && apuesta <= creditos)
                 {
-                    Console.WriteLine("Los dados tienen 6 puntos:");
+                    Console.WriteLine("Los dados tienen hasta 6 puntos:");
                     Console.Write("Primer dado:");
                     dadoUno = Convert.ToInt32(Console.ReadLine());
-
                     Console.Write("Segundo dado:");
                     dadoDos = Convert.ToInt32(Console.ReadLine());
 
-                    if (apuesta > creditos || apuesta < 0)
-                    {
-                        Console.WriteLine("Invalida");
-                    }
-
                     if (dadoUno + dadoDos == 11 || dadoUno + dadoDos == 7)
                     {
-                        creditos *= 2;
-                        Console.WriteLine("En hora buena, has ganado! (apostado se duplica("+creditos+"))");                        
+                        creditos += apuesta;
+                        Console.WriteLine("En hora buena, has ganado! (Ganas el doble (" + apuesta * 2 + ") de lo apostado (" + apuesta + ")");
+                        Console.WriteLine("Ahora tienes: " + creditos);
                     }
-                    else
+                    else if (dadoUno + dadoDos != 11 || dadoUno + dadoDos != 7)
                     {
-                        Console.WriteLine("Oh dang it! Has perdido todo lo apostado!");
-                        apuesta = 0;
+                        creditos -= apuesta;
+                        Console.WriteLine("Has perdido todo lo apostado! ("+apuesta+")");
+                        Console.WriteLine("Ahora tienes: "+creditos);                        
                     }
                 }
 
-            } while (apuesta != 0 || creditos < 1);
+                else if (apuesta > creditos || apuesta < 0)
+                {
+                    Console.WriteLine("Tu apuesta no fue validada");
+                }
+                if(creditos < 1)
+                {
+                    break;
+                }
+
+
+            } while (apuesta != 0 || creditos != 0);
+
             if (creditos < 1)
             {
-                Console.WriteLine("Perdiste todos tus creditos!");
+                Console.WriteLine("Has perdido todos tus creditos");
             }
-            else
+            else 
             {
-                Console.WriteLine("Dejaste de apostar, y te fuiste con "+creditos+" creditos en tus bolsillos");
+                Console.WriteLine("Decidiste dejar de apostar, tienes: " + creditos);
             }
 
         }
