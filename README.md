@@ -121,4 +121,44 @@ namespace ConsoleApplication1
         }
     }
 }
-completar 3
+RESVISAR EL 3
+
+
+// 4) "9"
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Double opcion, menor;
+            menor = 99999;
+
+
+            do
+            {
+                Console.WriteLine("Ingrese numeros enteros positivos, el programa se cierra al ingresar un negativo");
+                Console.Write("Respuesta: ");
+                opcion = Convert.ToInt32(Console.ReadLine());
+
+
+                if (opcion < menor && opcion > 0)
+                {
+                    menor = opcion;
+                }
+            } while (opcion > 0);
+
+            Console.WriteLine("El menor numero fue:"+menor);
+
+        }
+    }
+}
+
+// 5) "10"
